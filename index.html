@@ -60,28 +60,28 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="###" onclick="YAAW.tasks.selectActive();">Select Active</a></li>
-              <li><a href="###" onclick="YAAW.tasks.selectWaiting();">Select Waiting</a></li>
-              <li><a href="###" onclick="YAAW.tasks.selectPaused();">Select Paused</a></li>
-              <li><a href="###" onclick="YAAW.tasks.selectStoped();">Select Stoped</a></li>
+              <li><a href="###" onclick="YAAW.tasks.selectActive();">选择活动的任务</a></li>
+              <li><a href="###" onclick="YAAW.tasks.selectWaiting();">选择等待的任务</a></li>
+              <li><a href="###" onclick="YAAW.tasks.selectPaused();">选择暂停的任务</a></li>
+              <li><a href="###" onclick="YAAW.tasks.selectStoped();">选择停止的任务</a></li>
             </ul>
           </div>
         </div>
 
         <div class="pull-left" id="not-selected-grp">
           <div class="pull-left btn-group">
-            <a class="btn" id="add-task-btn" data-toggle="modal" href="#add-task-modal" rel="tooltip" title="Add Task">
+            <a class="btn" id="add-task-btn" data-toggle="modal" href="#add-task-modal" rel="tooltip" title="添加任务">
               <i class="icon-plus"></i> Add
             </a>
           </div>
           <div class="pull-left btn-group" id="do-all-btn">
-            <a href="###" onclick="ARIA2.unpause_all();" class="btn" id="unpause-all" rel="tooltip" title="Start All">
+            <a href="###" onclick="ARIA2.unpause_all();" class="btn" id="unpause-all" rel="tooltip" title="开始所有任务">
               <i class="icon-forward"></i>
             </a>
-            <a href="###" onclick="ARIA2.pause_all();" class="btn" id="pause-all" rel="tooltip" title="Pause All">
+            <a href="###" onclick="ARIA2.pause_all();" class="btn" id="pause-all" rel="tooltip" title="暂停所有任务">
               <i class="icon-stop"></i>
             </a>
-            <a href="###" onclick="ARIA2.purge_download_result();" class="btn" id="pure-all" rel="tooltip" title="Remove Finished Tasks">
+            <a href="###" onclick="ARIA2.purge_download_result();" class="btn" id="pure-all" rel="tooltip" title="移除其他任务">
               <i class="icon-trash"></i>
             </a>
           </div>
@@ -89,13 +89,13 @@
 
         <div class="pull-left hide" id="selected-grp">
           <div class="btn-group">
-            <a href="###" onclick="YAAW.tasks.unpause();YAAW.tasks.unSelectAll();" class="btn" rel="tooltip" title="Start">
+            <a href="###" onclick="YAAW.tasks.unpause();YAAW.tasks.unSelectAll();" class="btn" rel="tooltip" title="开始">
               <i class="icon-play"></i>
             </a>
-            <a href="###" onclick="YAAW.tasks.pause();YAAW.tasks.unSelectAll();" class="btn" rel="tooltip" title="Pause">
+            <a href="###" onclick="YAAW.tasks.pause();YAAW.tasks.unSelectAll();" class="btn" rel="tooltip" title="暂停">
               <i class="icon-pause"></i>
             </a>
-            <a href="###" onclick="YAAW.tasks.remove();YAAW.tasks.unSelectAll();" class="btn" rel="tooltip" title="Remove">
+            <a href="###" onclick="YAAW.tasks.remove();YAAW.tasks.unSelectAll();" class="btn" rel="tooltip" title="移除">
               <i class="icon-remove"></i>
             </a>
           </div>
@@ -106,10 +106,16 @@
 
         <div class="pull-right" id="other-grp">
           <div class="btn-group">
-            <a href="#" class="btn" id="refresh-btn" rel="tooltip" title="Refresh">
-              <i class="icon-refresh"></i> Refresh
+            <a href="#" class="btn" id="refresh-btn" rel="tooltip" title="刷新">
+              <i class="icon-refresh"></i> 刷新
             </a>
-            <a class="btn" id="setting-btn" data-toggle="modal" href="#setting-modal" rel="tooltip" title="Settings">
+            <a href="/aria2" class="btn" rel="tooltip" title="返回webui版">
+              <i class="icon-refresh"></i> 返回
+            </a>
+            <a href="https://chrome.google.com/webstore/detail/mbl%E8%BF%85%E9%9B%B7qq%E6%97%8B%E9%A3%8E%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E6%B7%B7%E5%90%88%E5%A2%9E%E5%BC%BA%E8%84%9A%E6%9C%AC/iamaphkapjbdhhpdapkalhanifedeged" class="btn" rel="tooltip" title="安装旋风百度迅雷插件">
+              <i class="icon-plus"></i> 插件
+            </a>
+            <a class="btn" id="setting-btn" data-toggle="modal" href="#setting-modal" rel="tooltip" title="设置">
               <i class="icon-wrench"></i>
             </a>
           </div>
@@ -118,12 +124,12 @@
 
       <section id="active-tasks">
       <div class="section-header">
-        <i class="icon-chevron-down"></i><b>Active Tasks</b>
+        <i class="icon-chevron-down"></i><b>活动的任务</b>
       </div>
       <ul class="tasks-table" id="active-tasks-table">
         <li>
           <div class="empty-tasks">
-            <strong>No Active Tasks</strong>
+            <strong>没有活动的任务</strong>
           </div>
         </li>
       </ul>
@@ -131,12 +137,12 @@
 
       <section id="other-tasks">
       <div class="section-header">
-        <i class="icon-chevron-down"></i><b>Other Tasks</b>
+        <i class="icon-chevron-down"></i><b>其他的任务</b>
       </div>
       <ul id="waiting-tasks-table" class="tasks-table">
         <li>
           <div class="empty-tasks">
-            <strong>No Tasks</strong>
+            <strong>啥都没有</strong>
           </div>
         </li>
       </ul>
@@ -145,52 +151,52 @@
     </div>
 
     <ul id="task-contextmenu" class="dropdown-menu">
-      <li class="task-restart"><a href="###" onclick="YAAW.contextmenu.restart();">ReStart</a></li>
-      <li class="task-start"><a href="###" onclick="YAAW.contextmenu.unpause();">Start</a></li>
-      <li><a href="###" onclick="YAAW.contextmenu.pause();">Pause</a></li>
-      <li><a href="###" onclick="YAAW.contextmenu.remove();">Remove</a></li>
+      <li class="task-restart"><a href="###" onclick="YAAW.contextmenu.restart();">重新开始</a></li>
+      <li class="task-start"><a href="###" onclick="YAAW.contextmenu.unpause();">开始</a></li>
+      <li><a href="###" onclick="YAAW.contextmenu.pause();">暂停</a></li>
+      <li><a href="###" onclick="YAAW.contextmenu.remove();">移除</a></li>
       <li class="task-move divider"></li>
-      <li class="task-move"><a href="###" onclick="YAAW.contextmenu.movetop();">MoveTop</a></li>
-      <li class="task-move"><a href="###" onclick="YAAW.contextmenu.moveup();">MoveUp</a></li>
-      <li class="task-move"><a href="###" onclick="YAAW.contextmenu.movedown();">MoveDown</a></li>
-      <li class="task-move"><a href="###" onclick="YAAW.contextmenu.moveend();">MoveEnd</a></li>
+      <li class="task-move"><a href="###" onclick="YAAW.contextmenu.movetop();">置顶</a></li>
+      <li class="task-move"><a href="###" onclick="YAAW.contextmenu.moveup();">上移</a></li>
+      <li class="task-move"><a href="###" onclick="YAAW.contextmenu.movedown();">下移</a></li>
+      <li class="task-move"><a href="###" onclick="YAAW.contextmenu.moveend();">垫底</a></li>
     </ul>
 
     <section class="modal hide fade" id="add-task-modal">
     <div class="modal-header">
       <button class="close" data-dismiss="modal">×</button>
-      <h3>Add Task</h3>
+      <h3>添加任务</h3>
     </div>
     <div class="modal-body">
       <div id="add-task-alert" class="alert alert-error hide">
         <a href="###" onclick="$('#add-task-alert').hide();" class="close">×</a>
-        <strong>Error:</strong> <span class="alert-msg"></span>
+        <strong>错误:</strong> <span class="alert-msg"></span>
       </div>
       <form id="add-task-uri" onsubmit="YAAW.add_task.submit(this);return false;">
         <div class="input-append">
-          <input type="text" name="uri" id="uri-input" class="input-clear" placeholder="HTTP, FTP or Magnet" /><span><a id="torrent-up-btn" class="btn">Upload Torrent<input type="file" id="torrent-up-input" /></a></span>
+          <input type="text" name="uri" id="uri-input" class="input-clear" placeholder="在此输入下载链接" /><span><a id="torrent-up-btn" class="btn">上传种子文件<input type="file" id="torrent-up-input" /></a></span>
         </div>
-        <textarea id="uri-textarea" rows=5 class="input-clear hide" placeholder="HTTP, FTP or Magnet"></textarea>
+        <textarea id="uri-textarea" rows=5 class="input-clear hide" placeholder="在此输入下载链接"></textarea>
       </form>
       <div id="uri-more"><span class="or-and">&or;&or;&or;&or;&or;&or;</span><span class="or-and" style="display:none;">&and;&and;&and;&and;&and;&and;</span></div>
       <div id="add-task-option-wrap"></div>
     </div>
     <div class="modal-footer">
-      <a href="###" onclick="$('#add-task-uri').submit();" id="add-task-submit" class="btn btn-primary">Add</a>
-      <a href="###" onclick="YAAW.add_task.clean();" class="btn" data-dismiss="modal">Cancel</a>
+      <a href="###" onclick="$('#add-task-uri').submit();" id="add-task-submit" class="btn btn-primary">添加</a>
+      <a href="###" onclick="YAAW.add_task.clean();" class="btn" data-dismiss="modal">取消</a>
     </div>
     </section>
 
     <section class="modal hide fade" id="setting-modal">
     <div class="modal-header">
       <button class="close" data-dismiss="modal">×</button>
-      <h2>Settings</h2>
+      <h2>设置</h2>
     </div>
     <div class="modal-body">
       <form id="setting-form" class="form-horizontal" onsubmit="YAAW.setting.submit();return false;">
         <fieldset>
           <div class="control-group rpc-path-group">
-            <label class="control-label" for="rpc-path">JSON-RPC Path</label>
+            <label class="control-label" for="rpc-path">JSON-RPC主机</label>
             <div class="controls">
               <div class="input-append btn-group rpc-path-wrap">
                 <input type="text" class="input-xlarge" id="rpc-path"><a class="add-on btn dropdown-toggle" href="#" disabled><b class="caret"></b></a>
@@ -198,22 +204,22 @@
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label">Auto Refresh</label>
+            <label class="control-label">刷新间隔</label>
             <div class="controls">
               <label class="radio inline">
-                <input type="radio" name="refresh_interval" value="1000"> 1s
+                <input type="radio" name="refresh_interval" value="1000"> 1秒
               </label>
               <label class="radio inline">
-                <input type="radio" name="refresh_interval" value="5000" checked> 5s
+                <input type="radio" name="refresh_interval" value="5000" checked> 5秒
               </label>
               <label class="radio inline">
-                <input type="radio" name="refresh_interval" value="10000"> 10s
+                <input type="radio" name="refresh_interval" value="10000"> 10秒
               </label>
               <label class="radio inline">
-                <input type="radio" name="refresh_interval" value="60000"> 1min
+                <input type="radio" name="refresh_interval" value="60000"> 1分钟
               </label>
               <label class="radio inline">
-                <input type="radio" name="refresh_interval" value="0"> off 
+                <input type="radio" name="refresh_interval" value="0"> 不刷新 
               </label>
             </div>
           </div>
@@ -223,9 +229,9 @@
       </div>
     </div>
     <div class="modal-footer">
-      <div id="copyright">© Copyright <a href="https://github.com/binux/yaaw">Binux</a></div>
-      <a href="###" onclick="$('#setting-form').submit();" class="btn btn-success">Save</a>
-      <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+      <div id="copyright">© Copyright <a href="https://github.com/binux/yaaw">Binux</a>（7月份版本）汉化/补充：cjameslynn</div>
+      <a href="###" onclick="$('#setting-form').submit();" class="btn btn-success">保存</a>
+      <a href="#" class="btn" data-dismiss="modal">取消</a>
     </div>
     </section>
     
@@ -246,8 +252,8 @@
           <div class="task-info">
             <span class="task-status" rel="tooltip" title="{{status}} {{#_v.error_msg}}{{errorCode}}{{/_v.error_msg}}"><i class="{{#_v.status_icon}}{{status}}{{/_v.status_icon}}"></i></span>
             <span>{{#_v.format_size}}{{completedLength}}{{/_v.format_size}} / {{#_v.format_size}}{{totalLength}}{{/_v.format_size}}</span>
-            {{#uploadLength}}<span>(uploaded {{#_v.format_size}}{{uploadLength}}{{/_v.format_size}})</span>{{/uploadLength}}
-            {{#eta}}<span>ETA: {{#_v.format_time}}{{eta}}{{/_v.format_time}}</span>{{/eta}}
+            {{#uploadLength}}<span>(已上传 {{#_v.format_size}}{{uploadLength}}{{/_v.format_size}})</span>{{/uploadLength}}
+            {{#eta}}<span>剩余时间: {{#_v.format_time}}{{eta}}{{/_v.format_time}}</span>{{/eta}}
           </div>
         </div>
         <div class="right-area">
@@ -257,8 +263,8 @@
           <div class="progress-info">
             {{#downloadSpeed}}<span class="download-speed"><i class="icon-download"></i> {{#_v.format_size}}{{downloadSpeed}}{{/_v.format_size}}/s</span>{{/downloadSpeed}}
             {{#uploadSpeed}}<span class="upload-speed"><i class="icon-upload"></i> {{#_v.format_size}}{{uploadSpeed}}{{/_v.format_size}}/s</span>{{/uploadSpeed}}
-            {{#connections}}<span class="seeders"><i class="icon-signal" rel="tooltip" title="Connections"></i> {{connections}}</span>{{/connections}}
-            {{#numSeeders}}<span class="seeders"><i class="icon-magnet" rel="tooltip" title="Seeders"></i> {{numSeeders}}</span>{{/numSeeders}}
+            {{#connections}}<span class="seeders"><i class="icon-signal" rel="tooltip" title="连接数"></i> {{connections}}</span>{{/connections}}
+            {{#numSeeders}}<span class="seeders"><i class="icon-magnet" rel="tooltip" title="种子数"></i> {{numSeeders}}</span>{{/numSeeders}}
           </div>
         </div>
       </li>
@@ -266,7 +272,7 @@
       {{^tasks}}
       <li>
         <div class="empty-tasks">
-          <strong>No Active Tasks</strong>
+          <strong>没有活动的任务</strong>
         </div>
       </li>
       {{/tasks}}
@@ -302,9 +308,9 @@
       <div class="info-box" data-gid="{{gid}}">
         <div class="tabbable tabs-left">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#ib-status" data-toggle="tab">Status</a></li>
-            <li><a href="#ib-files" data-toggle="tab">Files</a></li>
-            <li><a id="ib-options-a" href="#ib-options" data-toggle="tab">Options</a></li>
+            <li class="active"><a href="#ib-status" data-toggle="tab">状态</a></li>
+            <li><a href="#ib-files" data-toggle="tab">文件</a></li>
+            <li><a id="ib-options-a" href="#ib-options" data-toggle="tab">设置</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="ib-status"> </div>
@@ -317,23 +323,23 @@
 
     <script id="ib-status-tpl" type="text/mustache-template">
       <ul>
-        <li><strong>Size: </strong>{{#_v.format_size}}{{totalLength}}{{/_v.format_size}} ({{numPieces}} @ {{#_v.format_size}}{{pieceLength}}{{/_v.format_size}})</li>
-        <li><strong>Status: </strong>{{status}} {{error_msg}}</li>
-        <li><strong>Dir: </strong>{{dir}}</li>
+        <li><strong>尺寸: </strong>{{#_v.format_size}}{{totalLength}}{{/_v.format_size}} ({{numPieces}} @ {{#_v.format_size}}{{pieceLength}}{{/_v.format_size}})</li>
+        <li><strong>状态: </strong>{{status}} {{error_msg}}</li>
+        <li><strong>路径: </strong>{{dir}}</li>
         {{#bittorrent}}
-          {{#creationDate}}<li>Torrent Created At {{creationDate}}</li>{{/creationDate}}
-          {{#comment}}<li><strong>Comment: </strong>{{comment}}</li>{{/comment}}
+          {{#creationDate}}<li>创建时间 {{creationDate}}</li>{{/creationDate}}
+          {{#comment}}<li><strong>备注: </strong>{{comment}}</li>{{/comment}}
         {{/bittorrent}}
-        <li class="bitfield"><strong>Bitfield: </strong>{{#_v.bitfield}}{{bitfield}}{{/_v.bitfield}}</li>
+        <li class="bitfield"><strong>进度: </strong>{{#_v.bitfield}}{{bitfield}}{{/_v.bitfield}}</li>
       </ul>
     </script>
 
     <script id="ib-files-tpl" type="text/mustache-template">
       <ul>
         <li id="ib-file-btn">
-          <button id="ib-file-save" class="btn btn-primary">Save</button>
-          <button id="ib-file-select" class="btn">Select All</button>
-          <button id="ib-file-unselect" class="btn">Unselect All</button>
+          <button id="ib-file-save" class="btn btn-primary">保存</button>
+          <button id="ib-file-select" class="btn">全选</button>
+          <button id="ib-file-unselect" class="btn">全不选</button>
         </li>
         {{#files}}
         <li>
@@ -349,20 +355,20 @@
       <form id="ib-options-form" class="form-horizontal" onsubmit="false">
       <ul>
         <li id="ib-options-btn">
-          <button id="ib-options-save" class="btn btn-primary">Save</button>
+          <button id="ib-options-save" class="btn btn-primary">保存</button>
         </li>
-        <li><span>Download Limit:</span><input name="max-download-limit" class="active-allowed" value="{{max-download-limit}}" /></li>
-        <li><span>Upload Limit:</span><input name="max-upload-limit" class="active-allowed" value="{{max-upload-limit}}" /></li>
-        <li><span>Split:</span><input name="split" value="{{split}}" /></li>
-        <li><span>Conn per Serv:</span><input name="max-connection-per-server" value="{{max-connection-per-server}}" /></li>
-        <li><span>Split Size:</span><input name="min-split-size" value="{{min-split-size}}" /></li>
+        <li><span>下载限速:</span><input name="max-download-limit" class="active-allowed" value="{{#_v.format_size_0}}{{max-download-limit}}{{/_v.format_size_0}}" /></li>
+        <li><span>上传限速:</span><input name="max-upload-limit" class="active-allowed" value="{{#_v.format_size_0}}{{max-upload-limit}}{{/_v.format_size_0}}" /></li>
+        <li><span>分割下载:</span><input name="split" value="{{split}}" /></li>
+        <li><span>连接数:</span><input name="max-connection-per-server" value="{{max-connection-per-server}}" /></li>
+        <li><span>分割大小:</span><input name="min-split-size" value="{{#_v.format_size_0}}{{min-split-size}}{{/_v.format_size_0}}" /></li>
       </form>
     </script>
 
     <script id="other-task-empty" type="text/mustache-template">
       <li>
         <div class="empty-tasks">
-          <strong>No Tasks</strong>
+          <strong>啥都没有</strong>
         </div>
       </li>
     </script>
@@ -371,13 +377,13 @@
       <hr />
       <form id="add-task-option" class="form-horizontal" onsubmit="false">
         <div class="control-group">
-          <label class="control-label" for="ati-out">File Name</label>
+          <label class="control-label" for="ati-out">文件名</label>
           <div class="controls">
             <input id="ati-out" class="input-xlarge input-clear" name="out" />
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label" for="ati-dir">Dir</label>
+          <label class="control-label" for="ati-dir">保存路径</label>
           <div class="controls">
             <input id="ati-dir" class="input-xlarge" name="dir" />
           </div>
@@ -387,7 +393,7 @@
           <div class="controls">
             <label class="checkbox">
               <input type="checkbox" name="pause" class="input-save" {{#pause}}checked{{/pause}} />
-              Pause When Added
+              暂不开始任务
             </label>
           </div>
         </div>
@@ -395,38 +401,38 @@
           <div class="controls">
             <label class="checkbox">
               <input type="checkbox" name="parameterized-uri" class="input-save" {{#parameterized-uri}}checked{{/parameterized-uri}} />
-              Parameterized URI
+              参数化 URI
             </label>
           </div>
         </div>
         <div class="clearfix"></div>
         <div class="control-group half">
-          <label class="control-label" for="ati-split">Split</label>
+          <label class="control-label" for="ati-split">分割</label>
           <div class="controls">
             <input id="ati-split" class="input-small input-save" name="split" value="{{split}}" />
           </div>
         </div>
         <div class="control-group half">
-          <label class="control-label" for="ati-cps">Conn/Serv</label>
+          <label class="control-label" for="ati-cps">连接数</label>
           <div class="controls">
             <input id="ati-cps" class="input-small input-save" name="max-connection-per-server" value="{{max-connection-per-server}}" />
           </div>
         </div>
         <div class="control-group half">
-          <label class="control-label" for="ati-sr">Seed Ratio</label>
+          <label class="control-label" for="ati-sr">分享率</label>
           <div class="controls">
             <input id="ati-sr" class="input-small input-save" name="seed-ratio" value="{{seed-ratio}}" />
           </div>
         </div>
         <div class="control-group half">
-          <label class="control-label" for="ati-st">Seed Time</label>
+          <label class="control-label" for="ati-st">做种时间</label>
           <div class="controls">
             <input id="ati-st" class="input-small input-save" name="seed-time" value="{{seed-time}}" />
           </div>
         </div>
         <div class="clearfix"></div>
         <div class="control-group">
-          <label class="control-label" for="ati-header">Header</label>
+          <label class="control-label" for="ati-header">头</label>
           <div class="controls">
             <textarea id="ati-header" class="input-xlarge input-save" name="header" warp="off">{{header}}</textarea>
           </div>
@@ -438,25 +444,25 @@
       <hr />
       <form id="aria2-gs-form" class="form-horizontal" onsubmit="false">
         <div class="control-group half">
-          <label class="control-label" for="gsi-dl">Download Limit</label>
+          <label class="control-label" for="gsi-dl">下载限速</label>
           <div class="controls">
             <input id="gsi-dl" name="max-overall-download-limit" class="input-small" value="{{max-overall-download-limit}}" />
           </div>
         </div>
         <div class="control-group half">
-          <label class="control-label" for="gsi-ul">Upload Limit</label>
+          <label class="control-label" for="gsi-ul">上传限速</label>
           <div class="controls">
             <input id="gsi-ul" name="max-overall-upload-limit" class="input-small" value="{{max-overall-upload-limit}}" />
           </div>
         </div>
         <div class="control-group half">
-          <label class="control-label" for="gsi-cd">Concurrent Downs</label>
+          <label class="control-label" for="gsi-cd">最多同时任务数</label>
           <div class="controls">
             <input id="gsi-cd" name="max-concurrent-downloads" class="input-small" value="{{max-concurrent-downloads}}" />
           </div>
         </div>
         <div class="control-group half">
-          <label class="control-label" for="gsi-mss">Min Split Size</label>
+          <label class="control-label" for="gsi-mss">最小分割尺寸</label>
           <div class="controls">
             <input id="gsi-mss" name="min-split-size" class="input-small" value="{{#_v.format_size_0}}{{min-split-size}}{{/_v.format_size_0}}" />
           </div>
@@ -464,13 +470,13 @@
         <div class="clearfix"></div>
 
         <div class="control-group">
-          <label class="control-label" for="gsi-ua">User Agent</label>
+          <label class="control-label" for="gsi-ua">伪装</label>
           <div class="controls">
             <input id="gsi-ua" name="user-agent" class="input-xlarge" value="{{user-agent}}" />
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label" for="gsi-dir">Base Dir</label>
+          <label class="control-label" for="gsi-dir">默认下载路径</label>
           <div class="controls">
             <input id="gsi-dir" name="dir" class="input-xlarge" value="{{dir}}" disabled />
           </div>
